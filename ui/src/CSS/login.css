@@ -1,0 +1,22 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.login{
+    background: white;
+    min-height: 80vh;
+    width: 35%;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+    border-radius: 5%;
+}
+.top-heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    color:#426696;
+    margin-top: 5%;
+}
+
+.choseRole{
+    display: flex;
+    justify-content: center;
+}

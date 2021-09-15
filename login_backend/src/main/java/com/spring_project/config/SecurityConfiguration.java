@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.management.relation.Role;
 
 
 @Configuration
@@ -34,8 +35,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication().withUser("Pardeep").password(passwordEncoder().encode("test@123"))
-                .authorities("USER", "ADMIN");
+//        auth.inMemoryAuthentication().withUser("Pardeep").password(passwordEncoder().encode("test@123"))
+//                .authorities("USER", "ADMIN");
 
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 
@@ -57,9 +58,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint).and()
-                .authorizeRequests((request) -> request.antMatchers("/h2-console/**", "/login/auth").permitAll()
-                        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated())
-                .addFilterBefore(new JWTAuthenticationFilter(userService, jWTTokenHelper),
+                .authorizeRequests((request) -> request.antMatchers( "/login/auth").permitAll()
+                        .antMatchers(HttpMethod.GET, "/login/auth/userinfo").permitAll()
+                        .anyRequest().authenticated())
+                        .addFilterBefore(new JWTAuthenticationFilter(userService, jWTTokenHelper),
                         UsernamePasswordAuthenticationFilter.class);
 
         http.csrf().disable().cors().and().headers().frameOptions().disable();
