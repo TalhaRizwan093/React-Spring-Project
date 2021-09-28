@@ -55,9 +55,11 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public ResponseEntity<String> saveEmployee(@RequestBody User user) {
+    public ResponseEntity<String> saveUser(@RequestBody User user) {
         // save employee to database
-        List<Authority> authorityList=authorityService.getAllAuthorities();
+
+        List<Authority> authorityList= authorityService.getAllAuthorities();
+        authorityList.remove(0);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 
@@ -69,7 +71,20 @@ public class UserController {
         else{
             return new ResponseEntity<>("Please Enter All Fields", HttpStatus.BAD_REQUEST);
         }
+    }
 
+    @PostMapping("/saveAdmin")
+    public ResponseEntity<String> saveAdmin(@RequestBody User user) {
+        List<Authority> authorityList= authorityService.getAllAuthorities();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if(user.getEmail() != null){
+            user.setAuthorities(authorityList);
+            userService.saveUser(user);
+            return new ResponseEntity<>("Success", HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>("Please Enter All Fields", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/employee/{id}")

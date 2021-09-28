@@ -178,6 +178,10 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
+//    public List<Authority> getAuthoritiesList() {
+//        return authorities;
+//    }
+
 
 
 }

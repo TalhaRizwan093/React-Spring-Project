@@ -1,6 +1,7 @@
 package com.spring.signup.services;
 
 import com.spring.signup.model.Authority;
+import com.spring.signup.model.User;
 import com.spring.signup.repository.AuthorityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class AuthorityServiceImpl implements AuthorityService{
     public List<Authority> getAllAuthorities() {
         return authRepository.findAll();
     }
+
+
 
     @Override
     public void saveAuthority(Authority auth) {

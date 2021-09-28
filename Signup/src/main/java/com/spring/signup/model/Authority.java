@@ -70,7 +70,13 @@ public class Authority {
         this.roleDescription = roleDescription;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "id=" + id +
+                ", roleCode='" + roleCode + '\'' +
+                ", roleDescription='" + roleDescription + '\'' +
+                '}';
+    }
 }
 

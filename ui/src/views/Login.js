@@ -73,13 +73,13 @@ const Login = () => {
                 <Container>
                     <Row>
                         <h2 className="top-heading" style={{ marginTop: 9 + '%' }}
-                        >Chose Account Type</h2>
+                        >Login</h2>
                     </Row>
                     <Row style={{ marginTop: 9 + '%' }}>
-                        <Col className="choseRole" xs={6}>
+                        {/* <Col className="choseRole" xs={6}>
                             <div>
                                 Admin <input onChange={handleCheckbox} type="radio" name="accountType" value="admin" />
-                            </div>
+                            </div> */}
 
                             {/* <Form>
                                 
@@ -98,14 +98,14 @@ const Login = () => {
                                     <p>{adminCheckbox}</p>
     
                             </Form> */}
-                        </Col>
+                        {/* </Col>
                         <Col className="choseRole" xs={6}>
 
                             <div>
                                 User <input onChange={handleCheckbox} type="radio" name="accountType" value="user" />
                             </div>
 
-                        </Col>
+                        </Col> */}
                     </Row>
                     <Row>
                         <label >Username:</label>
